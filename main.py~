@@ -1,7 +1,7 @@
 import speech_recognition as sr
 import os
 import webbrowser
-from openai import openAI
+from openai import OpenAI
 from config import apikey
 import datetime
 import random
@@ -13,9 +13,9 @@ chatStr = ""
 def chat(query):
     global chatStr
     print(chatStr)
-    openai.api_key = apikey
+    OpenAI.api_key = apikey
     chatStr += f"Harry: {query}\n Jarvis: "
-    response = openai.Completion.create(
+    response = OpenAI.Completion.create(
         model="text-davinci-003",
         prompt= chatStr,
         temperature=0.7,
@@ -31,10 +31,10 @@ def chat(query):
 
 
 def ai(prompt):
-    openai.api_key = apikey
+    OpenAI.api_key = apikey
     text = f"OpenAI response for Prompt: {prompt} \n *************************\n\n"
 
-    response = openai.Completion.create(
+    response = OpenAI.Completion.create(
         model="text-davinci-003",
         prompt=prompt,
         temperature=0.7,
